@@ -7,9 +7,9 @@ import {  NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className=" shadow-lg font-Poppins">
-      <div className="container mx-auto">
-        <Navbar fluid rounded>
+    <div className=" shadow-lg font-Poppins bg-[#EEF2F7]">
+      <div className="container mx-auto  bg-[#EEF2F7]">
+        <Navbar fluid rounded className="bg-[#EEF2F7]">
           <Navbar.Brand href="https://flowbite-react.com">
             <img src="logo.jpg" className="mr-3 h-6 w-9 sm:h-9 rounded-full" alt="Flowbite React Logo" />
             <span className="self-center font-Poppins whitespace-nowrap text-2xl font-semibold text-[#2F7955] ">Remembering <span className="text-red-600">Our </span> Heros</span>
