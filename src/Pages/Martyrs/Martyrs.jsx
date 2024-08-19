@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
-const OurHeroes = () => {
+
+const Martyrs = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['OurHeroe'], // Corrected key name
         queryFn: async () => {
@@ -20,7 +21,7 @@ const OurHeroes = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                {data?.slice(0,20).map((martyr, index) => (
+                {data?.map((martyr, index) => (
                     <div key={index} className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
                         <img src={martyr.martyrsImage} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                         <div className="flex flex-col justify-between  space-y-8">
@@ -38,4 +39,4 @@ const OurHeroes = () => {
     );
 };
 
-export default OurHeroes;
+export default Martyrs;

@@ -1,96 +1,78 @@
-import { Button, Navbar } from "flowbite-react";
-
-import { HiArchiveBox } from "react-icons/hi2";
+import React from 'react';
+import { Button, Navbar, Dropdown } from "flowbite-react";
 import { IoIosHome } from "react-icons/io";
-import { MdEventAvailable, MdOutlineAdd } from "react-icons/md";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <div className=" shadow-lg font-Poppins bg-[#EEF2F7]">
-      <div className="container mx-auto  bg-[#EEF2F7]">
+    <div className="shadow-lg font-Poppins bg-[#EEF2F7]">
+      <div className="container mx-auto">
         <Navbar fluid rounded className="bg-[#EEF2F7]">
-          <Navbar.Brand href="https://flowbite-react.com">
-            <img src="logo.jpg" className="mr-3 h-6 w-9 sm:h-9 rounded-full" alt="Flowbite React Logo" />
-            <span className="self-center font-Poppins whitespace-nowrap text-2xl font-semibold text-[#2F7955] ">Remembering <span className="text-red-600">Our </span> Heros</span>
+          <Navbar.Brand href="#">
+            <img src="logo.jpg" className="mr-3 h-6 w-9 sm:h-9 rounded-full" alt="Logo" />
+            <span className="self-center font-Poppins whitespace-nowrap text-2xl font-semibold text-[#2F7955]">
+              Remembering <span className="text-red-600">Our</span> Heroes
+            </span>
           </Navbar.Brand>
           <div className="flex md:order-2">
-            <Button className="bg-[#0B4838]">Get started</Button>
+            <Button className="bg-[#0B4838] hidden md:block">Get started</Button>
             <Navbar.Toggle />
           </div>
-          {/* <div className="flex md:order-2">
-      <Dropdown arrowIcon={false} inline label={<Avatar img="" rounded className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />}>
-        <Dropdown.Header>
-          <span className="block text-sm">hhhh</span>
-          <span className="block truncate text-sm font-medium">gg</span>
-        </Dropdown.Header>
-        <Dropdown.Item className="">
-          <Link to={`/MyFoods/`} className=" " href="#" activeClassName="active">
-            <div className="flex items-center gap-1 justify-center">
-              <span>Added Foods</span>
-            </div>
-          </Link>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Link to={`/MyFoodsRequest/`} className="" href="#" activeClassName="active">
-            <div className="flex items-center gap-1 justify-center">
-              <span>Requested Food </span>
-            </div>
-          </Link>
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item onClick={() => {
-         
-        }}>Sign out</Dropdown.Item>
-      </Dropdown>
-
-     
-
-      <Navbar.Toggle />
-    </div> */}
 
           {/* Navbar Items */}
-          <Navbar.Collapse className="text-[#194b33]">
-            <NavLink to="/" className="font-normal text-base " href="#" activeClassName="active">
-              <div className="flex items-center justify-center">
-                <IoIosHome />
-                <span>Home</span>
-              </div>
+          <Navbar.Collapse className="text-[#194b33] z-20">
+            <NavLink to="/" className="font-normal text-base" end>
+              {({ isActive }) => (
+                <div className={`flex items-center justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
+                  <IoIosHome />
+                  <span className="ml-2">Home</span>
+                </div>
+              )}
             </NavLink>
             <div className="border-r-2"></div>
-            <NavLink to="/AvailableFoods" className="font-normal text-base" href="#" activeClassName="active">
-              <div className="flex items-center gap-1 justify-center">
-                <MdEventAvailable />
-                <span>martyrs</span>
-              </div>
+            <NavLink to="/Martyrs" className="font-normal text-base" end>
+              {({ isActive }) => (
+                <div className={`flex items-center gap-1 justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
+                  <span>Martyrs</span>
+                </div>
+              )}
             </NavLink>
             <div className="border-r-2"></div>
-            <NavLink to="/AddFood" className="font-normal text-base" href="#" activeClassName="active">
-              <div className="flex items-center gap-1 justify-center">
-                <MdOutlineAdd />
-                <span>History</span>
-              </div>
+            <NavLink to="/AddFood" className="font-normal text-base" end>
+              {({ isActive }) => (
+                <div className={`flex items-center gap-1 justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
+                  <span>History</span>
+                </div>
+              )}
             </NavLink>
             <div className="border-r-2"></div>
-            <NavLink to={`/MyFoods/`} className="font-normal text-base" href="#" activeClassName="active">
-              <div className="flex items-center gap-1 justify-center">
-                <HiArchiveBox />
-                <span>Add</span>
-              </div>
+            <NavLink to="/fotage" className="font-normal text-base" end>
+              {({ isActive }) => (
+                <div className={`flex items-center gap-1 justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
+                  <span>Video</span>
+                </div>
+              )}
             </NavLink>
             <div className="border-r-2"></div>
-            {/* <NavLink to={`/MyFoodsRequest/`} className="font-normal text-base" href="#" activeClassName="active">
-        <div className="flex items-center gap-1 justify-center">
-          <FcInvite />
-          <span>My Food Request </span>
-        </div>
-      </NavLink>
-      <div className="border-r-2"></div> */}
-
+            <div className='flex justify-center items-center ml-5'>
+            {/* Add Dropdown */}
+            <Dropdown inline label={<span className="font-normal text-base">Add</span>}>
+              <Dropdown.Item>
+                <NavLink to="/add-new-martyrs" className="block px-4 py-2 text-sm text-gray-700">New Martyrs</NavLink>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <NavLink to="/addfotage" className="block px-4 py-2 text-sm text-gray-700">New Footage</NavLink>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <NavLink to="/history" className="block px-4 py-2 text-sm text-gray-700">Your History</NavLink>
+              </Dropdown.Item>
+            </Dropdown>
+            </div>
+            <div className="border-r-2"></div>
           </Navbar.Collapse>
         </Navbar>
       </div>
-
     </div>
   );
 };
