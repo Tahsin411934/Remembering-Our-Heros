@@ -17,6 +17,8 @@ import {
 import Fotage from './Pages/Fotage/Fotage.jsx';
 import AddFootage from './Pages/AddFootage/AddFootage.jsx';
 import Martyrs from './Pages/Martyrs/Martyrs.jsx';
+import History from './Pages/History/History.jsx';
+import MartyrDetails from './Pages/MartyrDetails/MartyrDetails.jsx';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/Martyrs",
         element: <Martyrs/>
+      },
+      {
+        path: "/history",
+        element: <History></History>
+      },
+      {
+        path: "/MartyrDetails/:id",
+        element: <MartyrDetails></MartyrDetails>
       }
     ]
   },

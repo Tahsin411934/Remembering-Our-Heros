@@ -36,7 +36,7 @@ const Add = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosSecure.post("http://localhost:5000/addmartyr", {
+            const response = await axiosSecure.post("/addmartyr", {
                 ...data,
                 martyrsImage: data.martyrsImage // Send the URL of the uploaded image
             });
@@ -102,6 +102,19 @@ const Add = () => {
 
                 <div>
                     <div className="mb-2 block">
+                        <Label htmlFor="age" value="Age" />
+                    </div>
+                    <TextInput
+                        id="age"
+                        type="number"
+                        placeholder="Age"
+                        {...register("age", )}
+                    />
+                    {errors.age && <p className="text-red-500 ml-1">Age is required.</p>}
+                </div>
+
+                <div>
+                    <div className="mb-2 block">
                         <Label htmlFor="occupation" value="Occupation" />
                     </div>
                     <TextInput
@@ -160,15 +173,31 @@ const Add = () => {
                 {/* Details */}
                 <div>
                     <div className="mb-2 block">
-                        <Label htmlFor="details" value="Details" />
+                        <Label htmlFor="details" value="How he/she became a MARTYR" />
                     </div>
                     <textarea
                         id="details"
-                        placeholder="Details about the Martyr"
+                        placeholder="How he/she became a MARTYR"
                         className="textarea textarea-bordered w-full"
                         {...register("details")}
                     />
                     {errors.details && <p className="text-red-500 ml-1">Details are required.</p>}
+                </div>
+
+                {/* New Fields */}
+                
+
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="biography" value="short Biography" />
+                    </div>
+                    <textarea
+                        id="biography"
+                        placeholder="Biography"
+                        className="textarea textarea-bordered w-full"
+                        {...register("biography")}
+                    />
+                    {errors.biography && <p className="text-red-500 ml-1">Biography is required.</p>}
                 </div>
 
                 {/* Submit Button */}

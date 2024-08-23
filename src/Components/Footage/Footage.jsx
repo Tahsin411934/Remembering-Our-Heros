@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
-const Fotage = () => {
+const Footage = () => {
     const { data, isLoading, error } = useQuery({
-        queryKey: ['OurHeroe'],
+        queryKey: ['Footages'],
         queryFn: async () => {
             const res = await axiosSecure.get('/footage');
             return res.data;
@@ -14,13 +15,13 @@ const Fotage = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div className="container mx-auto mt-8 px-4">
-            <h1 className="text-4xl font-bold mb-8 text-center">Footage</h1>
+        <div className="container mx-auto mt-32 px-4">
+            <h1 className="text-4xl font-bold mb-8">Footage</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {data.map((video) => (
+                {data.slice(0,6).map((video) => (
                     <div
                         key={video._id}
-                        className="border border-gray-300 rounded-lg overflow-hidden bg-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300"
+                        className="border border-gray-300 rounded-lg overflow-hidden bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
                     >
                         <a
                             href={video.driveLink}
@@ -45,8 +46,15 @@ const Fotage = () => {
                     </div>
                 ))}
             </div>
+            <div className="text-center mt-8  float-end">
+                <Link to='/Martyrs'>
+                    <button className="btn  text-lg py-3 px-5 text-red-100 bg-green-950 font-semibold rounded-3xl">
+                        See All Vedios
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 };
 
-export default Fotage;
+export default Footage;

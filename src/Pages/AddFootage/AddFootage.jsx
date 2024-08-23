@@ -9,7 +9,7 @@ const AddFootage = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosSecure.post("http://localhost:5000/addFootage", {
+            const response = await axiosSecure.post("/addFootage", {
                 ...data,
                 
             });
@@ -24,9 +24,7 @@ const AddFootage = () => {
     return (
         <div className='font-Poppins mt-10 container mx-auto'>
             <form className="flex max-w-2xl border border-green-300 bg-gray-100 shadow-xl p-12 flex-col gap-4 mx-auto" onSubmit={handleSubmit(onSubmit)}>
-                <div className="text-xl font-semibold text-center">
-                    <h1>Please Provide Information <br /> <span className="text-[#2F7955] text-2xl font-bold">About Martyr's</span> </h1>
-                </div>
+                
 
                 {/* Video Title Field */}
                 <div>

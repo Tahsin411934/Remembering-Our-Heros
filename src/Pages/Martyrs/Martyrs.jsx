@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 const Martyrs = () => {
@@ -22,17 +23,18 @@ const Martyrs = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 {data?.map((martyr, index) => (
-                    <div key={index} className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
-                        <img src={martyr.martyrsImage} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
-                        <div className="flex flex-col justify-between  space-y-8">
-                            <div className="">
-                                <h2 className="text-xl font-semibold tracking-wide">{martyr.martyrsName || 'Unknown'}</h2>
-                                <p className="dark:text-gray-800">{martyr.occupation || 'No description available'}</p>
-                                <p className="dark:text-gray-800">{martyr.institute	 || 'No institute available'}</p>
-                            </div>
-                            <button type="button" className="flex items-center bg-red-500 justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600  dark:text-gray-50">Read more</button>
+                    <div key={index} className="max-w-xs mx-auto rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
+                    <img width={250} height={250} src={martyr.martyrsImage || 'download.png'} alt="" className="object-cover object-center w-full rounded-t-md h-[230px] dark:bg-gray-500" />
+                    <div className="flex flex-col justify-between  space-y-8">
+                        <div className="">
+                            <h2 className="text-xl font-semibold tracking-wide">{martyr.martyrsName || 'Unknown'}</h2>
+                            <p className="dark:text-gray-800">{martyr.occupation || 'No description available'}</p>
+                            <p className="dark:text-gray-800 h-10">{martyr.institute	 || 'No institute available'}</p>
                         </div>
+                      
                     </div>
+                     <Link to={`/MartyrDetails/${martyr._id}`}> <button type="button" className="px-3 pb-3 float-end  text-red-800">Read more ➡️</button></Link>
+                </div>
                 ))}
             </div>
         </div>
