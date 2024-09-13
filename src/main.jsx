@@ -19,6 +19,13 @@ import AddFootage from './Pages/AddFootage/AddFootage.jsx';
 import Martyrs from './Pages/Martyrs/Martyrs.jsx';
 import History from './Pages/History/History.jsx';
 import MartyrDetails from './Pages/MartyrDetails/MartyrDetails.jsx';
+import ChineRakhun from './Pages/Chine Rakhun/ChineRakhun.jsx';
+import AddPerpetrator from './Pages/AddPerpetrator/AddPerpetrator.jsx';
+import Login from './Auth/Login/Login.jsx';
+import AuthProvider from './AuthProvider/AuthProvider.jsx';
+import Signup from './Auth/SignUp/Signup.jsx';
+import Deshboard from './AdminDeshboard/Deshboard.jsx';
+import PendingRequest from './Pages/PendingRequest/PendingRequest.jsx';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -29,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>
       },
       {
         path: "/add-new-martyrs",
@@ -53,7 +68,23 @@ const router = createBrowserRouter([
       {
         path: "/MartyrDetails/:id",
         element: <MartyrDetails></MartyrDetails>
-      }
+      },
+      {
+        path: "/ChineRakhun",
+        element: <ChineRakhun/>
+      },
+      {
+        path:"/AddPerpetrator",
+        element:<AddPerpetrator></AddPerpetrator>
+      },
+      {
+        path:"/Admin/Deshboard",
+        element:<Deshboard></Deshboard>
+      },
+      {
+        path:"/pendingRequest",
+        element:<PendingRequest/>
+      },
     ]
   },
 ]);
@@ -61,7 +92,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider
       client={queryClient}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+    <RouterProvider router={router} />
+    </AuthProvider>
     </QueryClientProvider>
 
   </StrictMode>,

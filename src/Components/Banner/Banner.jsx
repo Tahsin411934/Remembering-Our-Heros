@@ -14,16 +14,16 @@ const Banner = () => {
                
                 
                 <div className="lg:grid grid-cols-3 lg:mt-6 mt-5  gap-2 pt-3 text-white font-Montserrat font-bold lg:w-[95%] mx-auto text-center text-2xl">
-                    <h1 className="text-red-500 border border-gray-300 rounded-xl p-2 bg-[#FDE3E3]" >Martyrs to This Day : 500+</h1>
-                    <h1 className="text-[#D97506] mt-2 lg:mt-0 border border-gray-300 rounded-xl p-2 bg-[#FEF3C7]" >Injured to This Day : 33,000+</h1>
+                    <h1 className="text-red-500 border border-gray-300 rounded-xl p-2 bg-[#FDE3E3]" >Martyrs to This Day : 800+</h1>
+                    <h1 className="text-[#D97506] mt-2 lg:mt-0 border border-gray-300 rounded-xl p-2 bg-[#FEF3C7]" >Injured to This Day : 30,000+</h1>
                     <h1 className="text-[#20201f]  mt-2 lg:mt-0 border border-gray-300 rounded-xl p-2 bg-[#E3F5E3]" >Arrest & Disappear
-                        11,000+</h1>
+                        12,000+</h1>
                 </div>
                 <div className="lg:flex justify-start gap-5 lg:mr-[4%] lg:float-end text-center pb-5 items-center">
                     <Link to={"/add-new-martyrs"} >
                         <button className="btn  bg-[#0B4838] p-2  hidden lg:block lg:p-3 mt-5 lg:mt-5 ml-3 rounded-full font-Poppins text-white font-semibold text-base lg:w-[100%]  w-[65%] hover:bg-red-800 ">Submit MARTYRS Information</button></Link>
                     <Link to={"/add-new-martyrs"} >
-                        <button className="btn  bg-red-800 hidden lg:block p-2  lg:p-3 mt-5 lg:mt-5 ml-3 rounded-full font-Poppins text-white font-semibold text-base lg:w-[100%]  w-[65%] hover:bg-red-800 ">Submit MARTYRS Information</button></Link>
+                        <button className="btn  bg-red-800 hidden lg:block p-2  lg:p-3 mt-5 lg:mt-5 ml-3 rounded-full font-Poppins text-white font-semibold text-base lg:w-[100%]  w-[65%] hover:bg-red-800 ">Share your story with us</button></Link>
 
                 </div>
             </div>

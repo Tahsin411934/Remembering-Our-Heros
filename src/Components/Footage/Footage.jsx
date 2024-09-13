@@ -46,10 +46,10 @@ const Footage = () => {
                     </div>
                 ))}
             </div>
-            <div className="text-center mt-8  float-end">
-                <Link to='/Martyrs'>
-                    <button className="btn  text-lg py-3 px-5 text-red-100 bg-green-950 font-semibold rounded-3xl">
-                        See All Vedios
+            <div className="mx-auto text-center mt-5">
+                <Link to={'/fotage'}>
+                    <button className="btn border border-red-500 text-lg ml-10 py-3 px-5 text-red-100 bg-red-800 font-semibold rounded-xl mt-3">
+                        See All Footage <span className="font-bold"> &rarr;</span>
                     </button>
                 </Link>
             </div>

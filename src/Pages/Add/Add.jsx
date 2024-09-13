@@ -38,7 +38,8 @@ const Add = () => {
         try {
             const response = await axiosSecure.post("/addmartyr", {
                 ...data,
-                martyrsImage: data.martyrsImage // Send the URL of the uploaded image
+                status: 'pending',
+                martyrsImage: data.martyrsImage 
             });
 
             console.log(response.data);
@@ -67,6 +68,7 @@ const Add = () => {
                     </div>
                     <TextInput
                         id="yourName"
+                        required
                         type="text"
                         placeholder="Your Name"
                         {...register("yourName")}
@@ -81,6 +83,7 @@ const Add = () => {
                     <TextInput
                         id="martyrsName"
                         type="text"
+                        required
                         placeholder="Martyr's Name"
                         {...register("martyrsName")}
                     />

@@ -1,5 +1,5 @@
 
-import { Button, Navbar, Dropdown, Avatar } from "flowbite-react";
+import {  Navbar, Dropdown, Avatar } from "flowbite-react";
 
 import { NavLink } from "react-router-dom";
 import "./Header.css";
@@ -17,33 +17,44 @@ const Header = () => {
           </Navbar.Brand>
           <div className="flex lg:mt-0 mt-3 md:order-2 w-full lg:w-auto">
             <div className="flex justify-between items-center w-full">
-            <div className="flex  md:order-2">
-       
-            <Navbar.Toggle />
-      </div>
+              <div className="flex  md:order-2">
+
+                <Navbar.Toggle />
+              </div>
               <h1 className='italic text-[#0B4838] block lg:hidden md:hidden' >Bangla<span className='text-red-800' >desh</span> 2.0</h1>
               <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar alt="User settings" img="" rounded />
-          }
-        >
-          <Dropdown.Header>
+                arrowIcon={false}
+                inline
+                label={
+                  <Avatar alt="User settings" img="" rounded />
+                }
+              >
+                {/* <Dropdown.Header>
             <span className="block text-sm">Bonnie Green</span>
             <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-          </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
-        </Dropdown>
+          </Dropdown.Header> */}
+                <Dropdown.Item>
+                  <NavLink to="/add-new-martyrs" className="block px-4 py-2 text-sm text-gray-700">Add New Martyrs</NavLink>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <NavLink to="/addfotage" className="block px-4 py-2 text-sm text-gray-700">Add New Footage</NavLink>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <NavLink to="/AddPerpetrator" className="block px-4 py-2 text-sm text-gray-700">Add Perpetrator</NavLink>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <NavLink to="/history" className="block px-4 py-2 text-sm text-gray-700">Share Your History</NavLink>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item><NavLink to={'/pendingRequest'}>Pending Request</NavLink> </Dropdown.Item>
+                <Dropdown.Item><NavLink to={'/login'}>Admin Login</NavLink> </Dropdown.Item>
+                
+              </Dropdown>
             </div>
           </div>
 
           {/* Navbar Items */}
-          <Navbar.Collapse className="text-[#194b33] z-20 ">
+          <Navbar.Collapse className="text-[#194b33] z-20 lg:ml-20 ">
             <NavLink to="/" className="font-normal text-base" end>
               {({ isActive }) => (
                 <div className={`flex items-center justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
@@ -77,20 +88,14 @@ const Header = () => {
               )}
             </NavLink>
             <div className="border-r-2"></div>
-            <div className='flex justify-center items-center ml-5'>
-            {/* Add Dropdown */}
-            <Dropdown inline label={<span className="font-normal text-base">Add</span>}>
-              <Dropdown.Item>
-                <NavLink to="/add-new-martyrs" className="block px-4 py-2 text-sm text-gray-700">New Martyrs</NavLink>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <NavLink to="/addfotage" className="block px-4 py-2 text-sm text-gray-700">New Footage</NavLink>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <NavLink to="/history" className="block px-4 py-2 text-sm text-gray-700">Your History</NavLink>
-              </Dropdown.Item>
-            </Dropdown>
-            </div>
+            <NavLink to="/ChineRakhun" className="font-normal text-base" end>
+              {({ isActive }) => (
+                <div className={`flex items-center gap-1 justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
+                  <span>Chine Rakhun</span>
+                </div>
+              )}
+            </NavLink>
+            
             <div className="border-r-2"></div>
           </Navbar.Collapse>
         </Navbar>

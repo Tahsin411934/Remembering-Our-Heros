@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const History = () => {
     return (
         <div className="container mx-auto font-Poppins mt-36">
@@ -17,9 +19,9 @@ const History = () => {
 
 The first quota reform movement occurred in 2013. In 2018, following the movement, a circular was issued that aligned with the protesters' demands. However, this circular was later declared invalid by the Supreme Court, leading to a resurgence of the movement in 2024. Throughout these agitations, students have faced violent responses from the Bangladesh Police and Chhatra League.
                         </p>
-                        <button className="self-start px-5 py-1 text-lg font-medium rounded-3xl bg-red-800 text-gray-50">
+                       <Link to={"/history"}> <button className="self-start px-5 py-1 text-lg font-medium rounded-3xl bg-red-800 text-gray-50">
                             Read More
-                        </button>
+                        </button> </Link>
                     </div>
                 </div>
             </section>
