@@ -45,6 +45,11 @@ const Header = () => {
                 <Dropdown.Item>
                   <NavLink to="/history" className="block px-4 py-2 text-sm text-gray-700">Share Your History</NavLink>
                 </Dropdown.Item>
+                <Dropdown.Item>
+                  <NavLink to="/ChineRakhun" className="block px-4 py-2 text-sm text-gray-700">Chine Rakhun</NavLink>
+                </Dropdown.Item>
+
+               
                 <Dropdown.Divider />
                 <Dropdown.Item><NavLink to={'/pendingRequest'}>Pending Request</NavLink> </Dropdown.Item>
                 <Dropdown.Item><NavLink to={'/login'}>Admin Login</NavLink> </Dropdown.Item>
@@ -88,13 +93,14 @@ const Header = () => {
               )}
             </NavLink>
             <div className="border-r-2"></div>
-            <NavLink to="/ChineRakhun" className="font-normal text-base" end>
+            <NavLink to="/blog" className="font-normal text-base" end>
               {({ isActive }) => (
                 <div className={`flex items-center gap-1 justify-center ${isActive ? 'text-[#0B4838]' : ''}`}>
-                  <span>Chine Rakhun</span>
+                  <span>Blog</span>
                 </div>
               )}
             </NavLink>
+           
             
             <div className="border-r-2"></div>
           </Navbar.Collapse>

@@ -33,7 +33,7 @@ const AddPerpetrator = () => {
     const onSubmit = async (data) => {
         console.log(data)
         try {
-            const response = await axiosSecure.post("/AddPerpetrator", {...data, status:"panding"});
+            const response = await axiosSecure.post("/AddPerpetrator", {...data, status:"pending"});
             console.log(response.data);
             reset();
         } catch (error) {

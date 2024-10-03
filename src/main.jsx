@@ -26,6 +26,7 @@ import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Signup from './Auth/SignUp/Signup.jsx';
 import Deshboard from './AdminDeshboard/Deshboard.jsx';
 import PendingRequest from './Pages/PendingRequest/PendingRequest.jsx';
+import Blog from './Pages/Blog/Blog.jsx';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path:"/pendingRequest",
         element:<PendingRequest/>
+      },
+      {
+        path:"/blog",
+        element:<Blog></Blog>
       },
     ]
   },

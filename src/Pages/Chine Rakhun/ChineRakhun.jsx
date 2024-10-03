@@ -7,7 +7,7 @@ const ChineRakhun = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['OurHeroe'], // Corrected key name
         queryFn: async () => {
-            const res = await axiosSecure.get('/AddPerpetrator/panding');
+            const res = await axiosSecure.get('/AddPerpetrator/success');
             return res.data;
         }
     });
@@ -29,7 +29,7 @@ console.log(data)
                         <div className="flex flex-col justify-between  space-y-8">
                             <div className="">
                                 <h2 className="text-xl font-semibold tracking-wide">{Perpetrator.perpetratorName1 || 'Unknown'}</h2>
-                                <p className="dark:text-gray-800">{Perpetrator.occupation || 'No description available'}</p>
+                                <p className="dark:text-gray-800">{Perpetrator.description || 'No description available'}</p>
                                 <p className="dark:text-gray-800 h-10">{Perpetrator.institute	 || 'No institute available'}</p>
                             </div>
                           

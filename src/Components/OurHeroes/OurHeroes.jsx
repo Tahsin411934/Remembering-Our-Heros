@@ -8,7 +8,7 @@ const OurHeroes = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['OurHeroe'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/allmartyr');
+            const res = await axiosSecure.get('/Martyrs/accepted');
             return res.data;
         }
     });
