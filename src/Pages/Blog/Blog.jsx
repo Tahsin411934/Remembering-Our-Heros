@@ -58,7 +58,8 @@ const Blog = () => {
                 status: 'pending',
                 attachImage: data.attachImage || '',
                 date: formattedDate,   // Insert current date
-                time: formattedTime    // Insert current time
+                time: formattedTime ,   // Insert current time
+                support: 0,   
             });
 
             console.log('Blog submitted:', response.data);
