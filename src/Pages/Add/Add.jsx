@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Button, Label, TextInput } from "flowbite-react";
 import axios from 'axios';
 import useAxiosSecure, { axiosSecure } from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const Add = () => {
     const { register, handleSubmit, reset, formState: { errors }, setValue, watch } = useForm();
@@ -41,7 +42,15 @@ const Add = () => {
                 status: 'pending',
                 martyrsImage: data.martyrsImage 
             });
-
+            if(response.data){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Martyr Information Added Succefully. wait for admin response",
+                    showConfirmButton: false,
+                    timer: 8500
+                  });
+            }
             console.log(response.data);
             reset();
         } catch (error) {

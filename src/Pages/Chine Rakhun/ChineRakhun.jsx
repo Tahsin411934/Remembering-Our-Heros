@@ -15,16 +15,16 @@ console.log(data)
     if (isLoading) return <p>Loading...</p>; 
     if (error) return <p>Error: {error.message}</p>; 
     return (
-        <div className="font-Poppins">
-            <div className="lg:w-[60%] px-3 mx-auto text-xl text-center font-semibold mt-10">
+        <div className="font-Poppins lg:w-[80%] mx-auto">
+            <div className="lg:w-[80%] px-3 mx-auto lg:text-xl text-center font-semibold mt-10">
                 <h1>Chine Rakhun: A public registry of all the perpetrators involved with attacking the unarmed students during peaceful protests.</h1>
                 <Link to={'/AddPerpetrator'}>
                     <button className="btn bg-red-800 text-white px-3 py-1 mt-3">Submit A Report</button></Link>
             </div>
             <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <div className="grid pb-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6  mt-6">
                 {data?.slice(0,20).map((Perpetrator, index) => (
-                    <div key={index} className="max-w-xs mx-auto rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
+                    <div key={index} className="max-w-xs p-2 mx-auto rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
                         <img width={250} height={250} src={Perpetrator.perpetratorPhoto} alt="" className="object-cover object-center w-full rounded-t-md h-[230px] dark:bg-gray-500" />
                         <div className="flex flex-col justify-between  space-y-8">
                             <div className="">

@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { axiosSecure } from '../../Hooks/useAxiosSecure';
+import useBlog from "../../Hooks/useBlog";
+import React, { useState } from "react";
+import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
 const BlogPost = ({ post, refetch }) => {
-    const [isSupported, setIsSupported] = useState(false);
-    const [supportCount, setSupportCount] = useState(post.support); // Initialize with post's support count
-    const [isOpen, setIsOpen] = useState(false); // State for modal visibility
+    const [isSupported, setIsSupported] = React.useState(false);
+    const [supportCount, setSupportCount] = React.useState(post.support);
+    const [isOpen, setIsOpen] = useState(false);
 
     // Check local storage for support status on component mount
-    useEffect(() => {
-        const supportedPosts = JSON.parse(localStorage.getItem('supportedPosts')) || [];
+    React.useEffect(() => {
+        const supportedPosts =
+            JSON.parse(localStorage.getItem("supportedPosts")) || [];
         setIsSupported(supportedPosts.includes(post._id));
     }, [post._id]);
 
     const handleSupport = async (id) => {
         try {
             let updatedSupport = supportCount; // Use the current support count
-            let supportedPosts = JSON.parse(localStorage.getItem('supportedPosts')) || [];
+            let supportedPosts =
+                JSON.parse(localStorage.getItem("supportedPosts")) || [];
 
             if (isSupported) {
                 // Remove support
                 updatedSupport -= 1;
-                supportedPosts = supportedPosts.filter(postId => postId !== id);
+                supportedPosts = supportedPosts.filter((postId) => postId !== id);
                 setIsSupported(false);
             } else {
                 // Add support
@@ -30,11 +33,11 @@ const BlogPost = ({ post, refetch }) => {
             }
 
             await axiosSecure.put(`/blogs/${id}`, { support: updatedSupport });
-            localStorage.setItem('supportedPosts', JSON.stringify(supportedPosts));
+            localStorage.setItem("supportedPosts", JSON.stringify(supportedPosts));
             setSupportCount(updatedSupport); // Update the support count in local state
             refetch(); // Call refetch after the update is successful
         } catch (error) {
-            console.error('Error updating support:', error); // Handle errors appropriately
+            console.error("Error updating support:", error); // Handle errors appropriately
         }
     };
 
@@ -59,9 +62,11 @@ const BlogPost = ({ post, refetch }) => {
     };
 
     return (
-        <div className="max-w-lg p-4  shadow-md bg-gray-200 dark:text-gray-800">
+        <div className="max-w-lg p-4 shadow-md bg-gray-200 dark:text-gray-800">
             <div className="flex justify-between pb-4 border-b">
-                <span className="text-sm text-gray-600">{timeAgo(`${post.date} ${post.time}`)}</span>
+                <span className="text-sm text-gray-600">
+                    {timeAgo(`${post.date} ${post.time}`)}
+                </span>
             </div>
             <div>
                 <img
@@ -87,7 +92,7 @@ const BlogPost = ({ post, refetch }) => {
                     <button
                         onClick={() => handleSupport(post._id)}
                         type="button"
-                        className={`flex items-center p-1 text-xl space-x-1.5 ${isSupported ? 'text-red-500' : 'text-blue-700'}`}
+                        className={`flex items-center p-1 text-xl space-x-1.5 ${isSupported ? "text-red-500" : "text-blue-700"}`}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-label="Number of likes" className="w-6 h-6 fill-current dark:text-violet-600">
                             <path d="M126.638,202.672H51.986a24.692,24.692,0,0,0-24.242,19.434,487.088,487.088,0,0,0-1.466,206.535l1.5,7.189a24.94,24.94,0,0,0,24.318,19.78h74.547a24.866,24.866,0,0,0,24.837-24.838V227.509A24.865,24.865,0,0,0,126.638,202.672ZM119.475,423.61H57.916l-.309-1.487a455.085,455.085,0,0,1,.158-187.451h61.71Z"></path>
@@ -104,9 +109,11 @@ const BlogPost = ({ post, refetch }) => {
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className="bg-black opacity-50 absolute inset-0" onClick={toggleModal}></div>
                     <div className="bg-white p-6 rounded-lg shadow-lg z-10 lg:w-[70%] max-h-[80vh] overflow-hidden">
-                        <h2 className="text-xl font-bold mb-4">Blog Post</h2>
+                        {/* <h2 className="text-xl font-bold mb-4">Modal Title</h2> */}
                         <div className="overflow-y-auto max-h-[60vh]">
-                            <p className="mb-4">{post.post}</p>
+                            <p className="mb-4">
+                                {post.post}
+                            </p>
                         </div>
                         <div className="text-end mt-3">
                             <button
@@ -116,6 +123,7 @@ const BlogPost = ({ post, refetch }) => {
                                 Close
                             </button>
                         </div>
+
                     </div>
                 </div>
             )}
@@ -123,4 +131,25 @@ const BlogPost = ({ post, refetch }) => {
     );
 };
 
-export default BlogPost;
+const Blog = () => {
+    const { posts, isLoading, error, refetch } = useBlog();
+
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error loading posts...</p>;
+
+    return (
+        <div className="font-Poppins mt-16 container mx-auto">
+            <div className="md:w-full text-center lg:text-left lg:w-[25%] lg:mt-0 mt-6">
+                <h1 className="text-2xl font-bold text-[#0A3E32]">Community</h1>
+            </div>
+            <hr className='mt-3 lg:flex h-[1px] border-none bg-blue-300 mx-auto w-[100%]' />
+            <div className="lg:grid mt-3 grid-cols-3 container mx-auto gap-5">
+                {posts?.slice(0, 6).map((post) => (
+                    <BlogPost key={post._id} post={post} refetch={refetch} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default Blog;

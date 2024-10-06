@@ -22,14 +22,15 @@ const OurHeroes = () => {
     );
 
     return (
-        <div className="font-Poppins container mx-auto">
+        <div >
+        <div className="font-Poppins container mx-auto ">
             <div className='lg:flex  justify-between items-center lg:mt-10 '>
-                <div className="text-center md:w-full lg:w-[25%] lg:mt-0 mt-6">
-                    <h1 className="text-4xl  font-bold text-[#0A3E32]">The Martyrs </h1>
+                <div className=" md:w-full lg:text-left text-center lg:w-[25%] lg:mt-0 mt-6">
+                    <h1 className="text-2xl  font-bold text-[#0A3E32]">The Martyrs </h1>
                 </div>
 
                 {/* Centered search bar */}
-                <div className="flex justify-end  lg:w-[100%] w-[80%] mx-auto mt-4 mb-6">
+                <div className="flex justify-end  lg:w-[100%] w-[80%] mx-auto mt-1 mb-6">
                     <input
                         type="text"
                         placeholder="Search by name..."
@@ -39,37 +40,41 @@ const OurHeroes = () => {
                     />
                 </div>
             </div>
-            <hr className='hidden lg:flex h-[1px] border-none bg-blue-500 mx-auto w-[100%]' />
+            <hr className='flex h-[1px] border-none bg-gray-300 mx-auto w-[100%]' />
 
 
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-3">
                 {filteredHeroes?.slice(0, 20).map((martyr, index) => (
-                    <div key={index} className="max-w-xs container w-[95%] mx-auto rounded-md dark:bg-gray-50 dark:text-gray-800">
-                        <img width={250} height={250} src={martyr.martyrsImage || 'download.png'} alt="" className="object-cover object-center w-full rounded-t-md lg:h-[230px] dark:bg-gray-500" />
-                        <div className="flex flex-col justify-between h-24 space-y-8">
-                            <div>
-                                <h2 className="lg:text-xl text-base  font-semibold tracking-wide">{martyr.martyrsName || 'Unknown'}</h2>
-                                <p className="dark:text-gray-800 text-sm">{martyr.occupation || 'No description available'}</p>
-                                <p className="dark:text-gray-800 text-sm h-10">{martyr.institute || 'No institute available'}</p>
+                    <Link to={`/MartyrDetails/${martyr._id}`} key={index}>
+                        <div className="max-w-xs container w-[95%] mx-auto rounded-md bg-gray-50 dark:text-gray-800">
+                            <img
+                                width={250}
+                                height={250}
+                                src={martyr.martyrsImage || 'notFound.png'}
+                                alt={martyr.martyrsName || "Image not found"}
+                                className="object-cover object-center w-full rounded-t-md h-[230px] dark:bg-gray-500"
+                            />
+                            <div className="flex flex-col justify-between  "> {/* Added padding for better spacing */}
+                                <div className="flex text-center justify-center bg-green-700 hover:border border-gray-600 hover:bg-green-100 text-white hover:text-green-900 "> {/* Center align and rounded bottom */}
+                                    <h2 className="lg:text-xl text-base   p-1 font-semibold tracking-wide">
+                                        {martyr.martyrsName || "Unknown"}
+                                    </h2>
+                                </div>
                             </div>
                         </div>
-                        <div className=''>
-                            <Link to={`/MartyrDetails/${martyr._id}`}>
-                                <button type="button" className="px-3 pb-3 float-end text-red-800">Read more ➡️</button>
-                            </Link>
-                        </div>
-
-                    </div>
+                    </Link>
                 ))}
             </div>
 
-            <div className="mx-auto text-center mt-5">
+
+            <div className="mx-auto text-end mt-5">
                 <Link to={'/Martyrs'}>
-                    <button className="btn border border-red-500 text-lg ml-10 py-3 px-5 text-red-100 bg-red-800 font-semibold rounded-xl mt-3">
+                    <button className="btn border border-gray-500 text-lg ml-10 py-3 px-5 text-green-800  font-semibold rounded-xl ">
                         See All Martyr <span className="font-bold"> &rarr;</span>
                     </button>
                 </Link>
             </div>
+        </div>
         </div>
     );
 };

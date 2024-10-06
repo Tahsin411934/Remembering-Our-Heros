@@ -27,6 +27,7 @@ import Signup from './Auth/SignUp/Signup.jsx';
 import Deshboard from './AdminDeshboard/Deshboard.jsx';
 import PendingRequest from './Pages/PendingRequest/PendingRequest.jsx';
 import Blog from './Pages/Blog/Blog.jsx';
+import PerpetratorDetails from './Pages/PerpetratorDetails/PerpetratorDetails.jsx';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/MartyrDetails/:id",
         element: <MartyrDetails></MartyrDetails>
+      },
+      {
+        path: "/PerpetratorDetails/:id",
+        element: <PerpetratorDetails></PerpetratorDetails>
       },
       {
         path: "/ChineRakhun",

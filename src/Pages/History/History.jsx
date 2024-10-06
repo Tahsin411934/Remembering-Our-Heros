@@ -4,7 +4,7 @@ const History = () => {
            <div className="max-w-full mx-auto p-4 bg-gray-100 overflow-y-scroll h-screen">
   <div className="bg-white p-6 rounded shadow-lg text-gray-900">
     <h1 className="text-2xl font-bold mb-4 text-center">বৈষম্য বিরোধী ছাত্র আন্দোলন-২০২৪ (৫ জুন থেকে ৫ আগস্ট-২০২৪) এর বিভিন্ন ঘটনাবলির টাইমলাইন। মন চাইলে টাইম ট্রাভেল করে আসতে পারেন।</h1>
-    
+    <hr className='flex h-[1px] border-none bg-green-200 mx-auto w-[100%] ' />
     <div className="space-y-4">
       <div>
         <p className="font-bold">𝟓 𝐉𝐔𝐍𝐄</p>

@@ -25,7 +25,7 @@ const Login = () => {
     //email password functionality
     signinUser(data.email, data.password)
       .then(() => {
-        navigate(location?.state ? location.state : "/Admin/Deshboard");
+        navigate(location?.state ? location.state : "/pendingRequest");
         setLoading(false);
       })
       .catch((error) => {

@@ -22,8 +22,9 @@ const Martyrs = () => {
     );
 
     return (
-        <div className="font-Poppins container mx-auto">
-            <div className="text-center mt-6">
+        <div className='bg-slate-200'>
+        <div className="font-Poppins container mx-auto pb-10 ">
+            <div className="text-center pt-6">
                 <h1 className="text-4xl font-bold text-[#0A3E32]">All <span className="text-red-700">Martyrs</span> </h1>
             </div>
 
@@ -34,10 +35,10 @@ const Martyrs = () => {
                     placeholder="Search by name..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="px-4 py-2 border border-gray-300 rounded-md w-full"
+                    className="px-4 py-2 border border-gray-400 rounded-md w-full"
                 />
             </div>
-
+            <hr className='flex h-[1px] border-none bg-green-200 mx-auto w-[100%] ' />
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
                 {filteredMartyrs?.length > 0 ? (
                     filteredMartyrs.map((martyr, index) => (
@@ -62,6 +63,7 @@ const Martyrs = () => {
                     <p className="text-center col-span-full">No martyrs found</p>
                 )}
             </div>
+        </div>
         </div>
     );
 };

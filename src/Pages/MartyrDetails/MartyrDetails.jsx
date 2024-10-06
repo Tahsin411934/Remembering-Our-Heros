@@ -16,7 +16,7 @@ const MartyrDetails = () => {
         enabled: !!id // Only run the query if 'id' exists
     });
 
-    console.log(data); // For debugging purposes
+   
 
     if (isLoading) return <p>Loading...</p>; // Handle loading state
     if (error) return <p>Error: {error.message}</p>; // Handle error state

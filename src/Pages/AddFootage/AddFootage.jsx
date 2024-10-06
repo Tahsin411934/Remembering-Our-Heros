@@ -2,6 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { Button, Label, TextInput } from "flowbite-react";
 import { axiosSecure } from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 const AddFootage = () => {
@@ -10,12 +11,21 @@ const AddFootage = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axiosSecure.post("/addFootage", {
-                ...data,
+                ...data,status:"pending",
                 
             });
 
-            console.log(response.data);
-            reset();
+            if(response.data){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Video Added Succefully. wait for admin response",
+                    showConfirmButton: false,
+                    timer: 8500
+                  });
+                reset();
+            }
+            
         } catch (error) {
             console.error('Error submitting form data', error);
         }

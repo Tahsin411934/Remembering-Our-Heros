@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Button, Label, TextInput } from "flowbite-react";
 import axios from 'axios';
 import useAxiosSecure from '../../Hooks/useAxiosSecure'; // Adjust the import path as needed
+import Swal from 'sweetalert2';
 
 const AddPerpetrator = () => {
     const { register, handleSubmit, reset, formState: { errors }, setValue } = useForm();
@@ -34,7 +35,15 @@ const AddPerpetrator = () => {
         console.log(data)
         try {
             const response = await axiosSecure.post("/AddPerpetrator", {...data, status:"pending"});
-            console.log(response.data);
+            if(response.data){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Perpetrator added successfully",
+                    showConfirmButton: false,
+                    timer: 4500,
+                })
+            }
             reset();
         } catch (error) {
             console.error('Error submitting form data', error);

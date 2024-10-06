@@ -6,7 +6,7 @@ const Footage = () => {
     const { data, isLoading, error } = useQuery({
         queryKey: ['Footages'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/footage');
+            const res = await axiosSecure.get('/footage/accepted');
             return res.data;
         }
     });
@@ -15,13 +15,16 @@ const Footage = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div className="container mx-auto mt-32 px-4">
-            <h1 className="text-4xl font-bold mb-8">Footage</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {data.slice(0,6).map((video) => (
+        <div className="container mx-auto mt-12 px-4 pb-10">
+            <div className="text-center lg:text-left md:w-full lg:w-[25%] lg:mt-0 mt-6">
+                <h1 className="text-2xl  font-bold text-[#0A3E32]">Footage </h1>
+            </div>
+            <hr className=' mt-3 mb-3 lg:flex h-[1px] border-none bg-blue-300 mx-auto w-[100%]' />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {data.slice(0, 8).map((video) => (
                     <div
                         key={video._id}
-                        className="border border-gray-300 rounded-lg overflow-hidden bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
+                        className="border border-gray-300 rounded-lg overflow-hidden  shadow-md hover:shadow-lg transition-shadow duration-300"
                     >
                         <a
                             href={video.driveLink}
@@ -46,9 +49,9 @@ const Footage = () => {
                     </div>
                 ))}
             </div>
-            <div className="mx-auto text-center mt-5">
+            <div className="mx-auto text-end mt-3">
                 <Link to={'/fotage'}>
-                    <button className="btn border border-red-500 text-lg ml-10 py-3 px-5 text-red-100 bg-red-800 font-semibold rounded-xl mt-3">
+                    <button className="btn border border-gray-500 text-lg ml-10 py-3 px-5 text-green-700  font-semibold rounded-xl mt-3">
                         See All Footage <span className="font-bold"> &rarr;</span>
                     </button>
                 </Link>

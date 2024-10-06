@@ -83,19 +83,20 @@ const Blog = () => {
 
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Error loading posts: {error.message}</p>;
-
+    refetch()
     return (
-        <div className="font-Poppins mt-6 container mx-auto">
+        <div className="font-Poppins mt-6  container mx-auto">
             {/* Input field to trigger the modal */}
             <div className="flex justify-center mb-4">
+                
                 <input
                     type="text"
                     placeholder="Share Your Story with Us"
-                    className="border w-[60%] border-gray-300 p-3 rounded-lg cursor-pointer"
+                    className="border w-[60%] border-gray-400 p-3 rounded-lg cursor-pointer"
                     onClick={openModal}
                 />
             </div>
-
+            <hr className='flex h-[1px] border-none bg-green-300 mx-auto w-[100%] ' />
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -168,7 +169,7 @@ const Blog = () => {
                 </div>
             )}
 
-            <div className="lg:grid mt-10 grid-cols-3 container mx-auto gap-5">
+            <div className="lg:grid mt-5 grid-cols-3 container mx-auto gap-5">
                 {posts?.map(post => (
                     <BlogPost key={post._id} post={post} refetch={refetch} />
                 ))}

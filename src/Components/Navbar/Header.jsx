@@ -1,10 +1,17 @@
 
-import {  Navbar, Dropdown, Avatar } from "flowbite-react";
+import { Navbar, Dropdown, Avatar } from "flowbite-react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
+import UseAuth from "../../Hooks/useAuth";
 
 const Header = () => {
+  const { logOut } = UseAuth()
+  const navigate = useNavigate(); 
+  const handleLogOut = (LogOut) => {
+    LogOut();
+    navigate("/");
+  }
   return (
     <div className="shadow-lg font-Poppins bg-[#E3F5E3]">
       <div className="container mx-auto">
@@ -43,17 +50,21 @@ const Header = () => {
                   <NavLink to="/AddPerpetrator" className="block px-4 py-2 text-sm text-gray-700">Add Perpetrator</NavLink>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <NavLink to="/history" className="block px-4 py-2 text-sm text-gray-700">Share Your History</NavLink>
+                  <NavLink to="/blog" className="block px-4 py-2 text-sm text-gray-700">Share Your History</NavLink>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <NavLink to="/ChineRakhun" className="block px-4 py-2 text-sm text-gray-700">Chine Rakhun</NavLink>
                 </Dropdown.Item>
 
-               
+
                 <Dropdown.Divider />
                 <Dropdown.Item><NavLink to={'/pendingRequest'}>Pending Request</NavLink> </Dropdown.Item>
                 <Dropdown.Item><NavLink to={'/login'}>Admin Login</NavLink> </Dropdown.Item>
-                
+                <Dropdown.Item>
+                  <button onClick={() => handleLogOut(logOut)}>Admin Logout</button>
+                </Dropdown.Item>
+
+
               </Dropdown>
             </div>
           </div>
@@ -100,8 +111,8 @@ const Header = () => {
                 </div>
               )}
             </NavLink>
-           
-            
+
+
             <div className="border-r-2"></div>
           </Navbar.Collapse>
         </Navbar>
